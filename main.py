@@ -1,3 +1,4 @@
+from src import utils
 from src.category import Category
 from src.product import Product
 
@@ -47,3 +48,12 @@ if __name__ == "__main__":
 
     print(Category.category_count)
     print(Category.product_count)
+
+    row_data = utils.read_json("data/products.json")
+    print(row_data)
+
+    categories_data = utils.create_objects_from_json(row_data)
+    print(categories_data)
+    print(categories_data[0].name)
+    print(categories_data[0].products)
+    print(categories_data[0].products[0].name)

@@ -83,6 +83,71 @@ print(category1.product_count)
  ```
 
 
+ ### Функция **read_json**(path: str) -> list[dict]
+ Функция принимает путь к JSON-файлу
+ и возвращает список словарей с категорями товаров
+
+ #### Пример использования: 
+ ```
+row_data = utils.read_json("data/products.json")
+print(row_data)
+ ```
+ #### Пример работы:
+ ```
+[
+    {
+        "name": "Смартфоны",
+        "description": "Смартфоны, как средство не только коммуникации,"
+        + " но и получение дополнительных функций для удобства жизни",
+        "products": [
+            {
+                "name": "Samsung Galaxy C23 Ultra",
+                "description": "256GB, Серый цвет, 200MP камера",
+                "price": 180000.0,
+                "quantity": 5,
+            },
+            {"name": "Iphone 15", "description": "512GB, Gray space", "price": 210000.0, "quantity": 8},
+            {"name": "Xiaomi Redmi Note 11", "description": "1024GB, Синий", "price": 31000.0, "quantity": 14},
+        ],
+    },
+    {
+        "name": "Телевизоры",
+        "description": "Современный телевизор, который позволяет наслаждаться просмотром,"
+        + " станет вашим другом и помощником",
+        "products": [
+            {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
+        ],
+    },
+]
+ ```
+
+
+ ### Функция **create_objects_from_json**(data: list[dict]) -> list
+ Функция принимает список словарей с категориями товаров
+ и формирует список экземпляров класса Category
+
+ #### Пример использования: 
+ ```
+row_data = utils.read_json("data/products.json")
+
+categories_data = utils.create_objects_from_json(row_data)
+print(categories_data)
+print(categories_data[0].name)
+print(categories_data[0].products)
+print(categories_data[0].products[0].name)
+ ```
+ #### Пример работы:
+ ```
+Смартфоны
+[
+    <src.product.Product object at 0x000002CEEF09BE10>, 
+    <src.product.Product object at 0x000002CEEF6AE8D0>, 
+    <src.product.Product object at 0x000002CEEF659D00>
+]
+Samsung Galaxy C23 Ultra
+ ```
+
+
  ## Тестирование:
 Проект покрыт тестами фреймворка pytest. Для их запуска выполните команду:
 ```
