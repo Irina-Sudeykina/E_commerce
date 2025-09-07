@@ -23,6 +23,14 @@ def product2():
 
 
 @pytest.fixture
+def product3():
+    """
+    Фикстура экземпляра класса Product - 3
+    """
+    return Product(name='65" TCL 65C7K', description="черный [4K UltraHD, Wi-Fi]", price=99999.0, quantity=3)
+
+
+@pytest.fixture
 def category1():
     """
     Фикстура экземпляра класса Category - 1

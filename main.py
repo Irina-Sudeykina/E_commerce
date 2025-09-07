@@ -7,32 +7,13 @@ if __name__ == "__main__":
     product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
 
-    print(product1.name)
-    print(product1.description)
-    print(product1.price)
-    print(product1.quantity)
-
-    print(product2.name)
-    print(product2.description)
-    print(product2.price)
-    print(product2.quantity)
-
-    print(product3.name)
-    print(product3.description)
-    print(product3.price)
-    print(product3.quantity)
-
     category1 = Category(
         "Смартфоны",
         "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [product1, product2, product3],
     )
 
-    print(category1.name == "Смартфоны")
-    print(category1.description)
-    print(len(category1.products))
-    print(category1.category_count)
-    print(category1.product_count)
+    print(category1.products)
 
     product4 = Product('55" QLED 4K', "Фоновая подсветка", 123000.0, 7)
     category2 = Category(
@@ -40,14 +21,11 @@ if __name__ == "__main__":
         "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом и помощником",
         [product4],
     )
-
-    print(category2.name)
-    print(category2.description)
-    print(len(category2.products))
+    product5 = Product('65" TCL 65C7K', "черный [4K UltraHD, Wi-Fi]", 99999.0, 3)
+    category2.add_product(product5)
     print(category2.products)
-
-    print(Category.category_count)
-    print(Category.product_count)
+    print(category2.product_count)
+    print(len(category2.products_in_list))
 
     row_data = utils.read_json("data/products.json")
     print(row_data)
@@ -83,3 +61,6 @@ if __name__ == "__main__":
     print(new_product.description)
     print(new_product.price)
     print(new_product.quantity)
+
+    new_product.price = 12000.0
+    print(new_product.price)

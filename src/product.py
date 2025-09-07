@@ -3,15 +3,32 @@ class Product:
 
     name: str
     description: str
-    price: float
+    __price: float
     quantity: int
 
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
         Product.instances.append(self)  # Добавляем каждый новый экземпляр в список
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: float):
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+            return
+        else:
+            if self.__price > new_price:
+                is_update_price = input("Подтвердите понижение цены (y/n):\n")
+                if is_update_price.lower() == "y":
+                    self.__price = new_price
+                else:
+                    return
 
     @classmethod
     def new_product(cls, new_product: dict):
@@ -25,8 +42,8 @@ class Product:
         else:
             for instance in cls.instances:
                 if instance.name == new_product.get("name", ""):
-                    if instance.price < new_product.get("price", 0):
-                        instance.price = new_product
+                    if instance.__price < new_product.get("price", 0):
+                        instance.__price = new_product
                     instance.quantity += new_product.get("quantity", 0)
                 return instance
 
