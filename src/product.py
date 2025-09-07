@@ -13,6 +13,11 @@ class Product:
         self.quantity = quantity
         Product.instances.append(self)  # Добавляем каждый новый экземпляр в список
 
+    @classmethod
+    def delete_all_instances(cls):
+        while len(cls.instances) > 0:
+            cls.instances.pop()  # Прямой вызов pop(), без переменной
+
     @property
     def price(self):
         return self.__price
@@ -29,6 +34,8 @@ class Product:
                     self.__price = new_price
                 else:
                     return
+            else:
+                self.__price = new_price
 
     @classmethod
     def new_product(cls, new_product: dict):
@@ -43,9 +50,9 @@ class Product:
             for instance in cls.instances:
                 if instance.name == new_product.get("name", ""):
                     if instance.__price < new_product.get("price", 0):
-                        instance.__price = new_product
+                        instance.__price = new_product.get("price", 0)
                     instance.quantity += new_product.get("quantity", 0)
-                return instance
+                    return instance
 
             return cls(
                 new_product.get("name", ""),
