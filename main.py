@@ -74,3 +74,9 @@ if __name__ == "__main__":
     print(new_product.price)
     
     print(str(product1))
+    print(str(product2))
+    print(str(product3))
+    
+    print(str(category1))
+    
+    print(category1.products)
