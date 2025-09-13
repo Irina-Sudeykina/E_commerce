@@ -104,3 +104,22 @@ def test_product_update_price(capsys, product1) -> None:
     with patch("builtins.input", return_value="n"):
         product1.price = 145000.0  # Попытка снизить цену
         assert product1.price == 165000.0  # Цена не снижена
+
+
+def test_product_str(product1) -> None:
+    """
+    Проверка строкового представления сласса Product
+    :param product1: фикстура экземпляра класса Product - 1
+    :return: Ничего не возвращает
+    """
+    assert str(product1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+
+
+def test_product_add(product1, product2) -> None:
+    """
+    Проверка сложения объектов сласса Product
+    :param product1: фикстура экземпляра класса Product - 1
+    :param product2: фикстура экземпляра класса Product - 2
+    :return: Ничего не возвращает
+    """
+    assert product1 + product2 == 2580000.0
