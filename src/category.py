@@ -19,9 +19,9 @@ class Category:
         full_cnt = 0
         for product in self.__products:
             full_cnt += product.quantity
-        
+
         return f"{self.name}, количество продуктов: {full_cnt} шт."
-    
+
     @property
     def products_in_list(self):
         return self.__products

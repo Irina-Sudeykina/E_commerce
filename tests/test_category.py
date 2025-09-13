@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_category_init(category1, category2) -> None:
     """
     Проверка инициализации класса Category
@@ -50,5 +53,26 @@ def test_category_add_product(category2, product3) -> None:
     assert len(category2.products_in_list) == 2
 
 
-def test_category_str(category1):
+def test_category_str(category1) -> None:
+    """
+    Проверка строкового представления класса Category
+    :param category1: фикстура экземпляра класса Category - 1
+    :return: ничего не возвращает
+    """
     assert str(category1) == "Смартфоны, количество продуктов: 27 шт."
+
+
+def test_product_iterator(category_iterator) -> None:
+    """
+    Проверка класса CategoryIterator
+    :param category_iterator: Фикстура экземпляра сласса CategoryIterator
+    :return: ничего не возвращает
+    """
+    iter(category_iterator)
+    category_iterator.index == 0
+    assert next(category_iterator).name == "Samsung Galaxy S23 Ultra"
+    assert next(category_iterator).name == "Iphone 15"
+    assert next(category_iterator).name == "Xiaomi Redmi Note 11"
+
+    with pytest.raises(StopIteration):
+        next(category_iterator)
