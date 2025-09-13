@@ -104,3 +104,7 @@ def test_product_update_price(capsys, product1) -> None:
     with patch("builtins.input", return_value="n"):
         product1.price = 145000.0  # Попытка снизить цену
         assert product1.price == 165000.0  # Цена не снижена
+
+
+def test_product_str(product1):
+    assert str(product1) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
