@@ -1,6 +1,7 @@
 import pytest
 
 from src.category import Category
+from src.category_iterator import CategoryIterator
 from src.product import Product
 
 
@@ -89,3 +90,11 @@ def category_json_file():
             ],
         },
     ]
+
+
+@pytest.fixture
+def category_iterator(category1):
+    """
+    Фикстура экземпляра сласса CategoryIterator для класса Category - 1
+    """
+    return CategoryIterator(category1)

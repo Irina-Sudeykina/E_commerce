@@ -1,5 +1,6 @@
 from src import utils
 from src.category import Category
+from src.category_iterator import CategoryIterator
 from src.product import Product
 
 if __name__ == "__main__":
@@ -72,3 +73,23 @@ if __name__ == "__main__":
     print(new_product.price)
     new_product.price = 0
     print(new_product.price)
+
+    print(str(product1))
+    print(str(product2))
+    print(str(product3))
+
+    print(str(category1))
+
+    print(category1.products)
+
+    print(product1 + product2)
+    print(product1 + product3)
+    print(product2 + product3)
+
+    iterator = CategoryIterator(category1)
+
+    for product in iterator:
+        print(product)
+    print()
+    for product in iterator:
+        print(product)
