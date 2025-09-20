@@ -38,4 +38,4 @@ class Category:
             self.__products.append(product)
             Category.product_count += 1
         else:
-            raise TypeError
+            raise TypeError("Переданный аргумент не является объектом Product!")

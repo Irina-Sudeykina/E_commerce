@@ -42,4 +42,4 @@ def test_lawn_grass_add_err(lawn_grass1) -> None:
     :return: Ничего не возвращает
     """
     with pytest.raises(TypeError):
-        result = lawn_grass1 + 1
+        print(lawn_grass1 + 1)

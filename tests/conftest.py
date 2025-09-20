@@ -108,14 +108,14 @@ def smartphone1():
     Фикстура экземпляра класса Smartphone - 1
     """
     return Smartphone(
-        name="Samsung Galaxy S23 Ultra", 
-        description="256GB, Серый цвет, 200MP камера", 
-        price=180000.0, 
+        name="Samsung Galaxy S23 Ultra",
+        description="256GB, Серый цвет, 200MP камера",
+        price=180000.0,
         quantity=5,
         efficiency=95.5,
         model="S23 Ultra",
         memory=256,
-        color="Серый"
+        color="Серый",
     )
 
 
@@ -125,14 +125,14 @@ def smartphone2():
     Фикстура экземпляра класса Smartphone - 2
     """
     return Smartphone(
-        name="Iphone 15", 
-        description="512GB, Gray space", 
-        price=210000.0, 
+        name="Iphone 15",
+        description="512GB, Gray space",
+        price=210000.0,
         quantity=8,
         efficiency=98.2,
         model="15",
         memory=512,
-        color="Gray space"
+        color="Gray space",
     )
 
 
@@ -142,13 +142,13 @@ def lawn_grass1():
     Фикстура экземпляра класса LawnGrass - 1
     """
     return LawnGrass(
-        name="Газонная трава", 
-        description="Элитная трава для газона", 
-        price=500.0, 
+        name="Газонная трава",
+        description="Элитная трава для газона",
+        price=500.0,
         quantity=20,
         country="Россия",
         germination_period="7 дней",
-        color="Зеленый"
+        color="Зеленый",
     )
 
 
@@ -158,11 +158,11 @@ def lawn_grass2():
     Фикстура экземпляра класса LawnGrass - 2
     """
     return LawnGrass(
-        name="Газонная трава 2", 
-        description="Выносливая трава", 
-        price=450.0, 
+        name="Газонная трава 2",
+        description="Выносливая трава",
+        price=450.0,
         quantity=15,
         country="США",
         germination_period="5 дней",
-        color="Темно-зеленый"
+        color="Темно-зеленый",
     )

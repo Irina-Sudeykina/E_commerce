@@ -1,5 +1,6 @@
-import pytest
 from unittest.mock import patch
+
+import pytest
 
 from src.product import Product
 
@@ -133,4 +134,4 @@ def test_product_add_err(product1) -> None:
     :return: Ничего не возвращает
     """
     with pytest.raises(TypeError):
-        result = product1 + 1
+        print(product1 + 1)

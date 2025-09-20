@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_smartphone_init(smartphone1, smartphone2) -> None:
     """
     Проверка инициации экземпляра сласса Smartphone
@@ -43,4 +44,4 @@ def test_smartphone_add_err(smartphone1) -> None:
     :return: Ничего не возвращает
     """
     with pytest.raises(TypeError):
-        result = smartphone1 + 1
+        print(smartphone1 + 1)
