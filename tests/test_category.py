@@ -76,3 +76,23 @@ def test_product_iterator(category_iterator) -> None:
 
     with pytest.raises(StopIteration):
         next(category_iterator)
+
+
+def test_category_add_product_err(category2) -> None:
+    """
+    Проверка геттера add_product класса Category
+    :param category2: фикстура экземпляра класса Category - 2
+    :return: ничего не возвращает
+    """
+    with pytest.raises(TypeError):
+        category2.add_product(1)
+
+
+def test_category_add_product_smartphone(category1, smartphone1):
+    category1.add_product(smartphone1)
+    assert category1.products_in_list[-1].name == "Samsung Galaxy S23 Ultra"
+
+
+def test_category_add_product_lawn_grass(category2, lawn_grass1):
+    category2.add_product(lawn_grass1)
+    assert category2.products_in_list[-1].name == "Газонная трава"
