@@ -83,6 +83,77 @@ print(category1.product_count)
  ```
 
 
+ ### Класс **Smartphone**
+ Наследник класса Product
+ Класс Smartphone расширен атрибутами: 
+     производительность (efficiency),
+     модель (model),
+     объем встроенной памяти (memory),
+     цвет (color).
+
+ #### Пример использования: 
+ ```
+from src.smartphone import Smartphone
+
+smartphone1 = Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+
+print(smartphone1.name)
+print(smartphone1.description)
+print(smartphone1.price)
+print(smartphone1.quantity)
+print(smartphone1.efficiency)
+print(smartphone1.model)
+print(smartphone1.memory)
+print(smartphone1.color)
+ ```
+ #### Пример работы:
+ ```
+Samsung Galaxy S23 Ultra
+256GB, Серый цвет, 200MP камера
+180000.0
+5
+95.5
+S23 Ultra
+256
+Серый
+ ```
+
+
+ ### Класс **LawnGrass**
+ Наследник класса Product
+ Класс LawnGrass расширен атрибутами: 
+     страна-производитель (country),
+     срок прорастания (germination_period),
+     цвет (color).
+
+ #### Пример использования: 
+ ```
+from src.lawn_grass import LawnGrass
+
+grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+print(grass1.name)
+print(grass1.description)
+print(grass1.price)
+print(grass1.quantity)
+print(grass1.country)
+print(grass1.germination_period)
+print(grass1.color)
+ ```
+ #### Пример работы:
+ ```
+Газонная трава
+Элитная трава для газона
+500.0
+20
+Россия
+7 дней
+Зеленый
+ ```
+
+
  ### Функция **read_json**(path: str) -> list[dict]
  Функция принимает путь к JSON-файлу
  и возвращает список словарей с категорями товаров
