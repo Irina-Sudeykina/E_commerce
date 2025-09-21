@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
+
+
+class Product(BaseProduct, PrintMixin):
     instances: list = []  # Список для хранения всех экземпляров класса
 
     name: str
@@ -12,6 +16,7 @@ class Product:
         self.__price = price
         self.quantity = quantity
         Product.instances.append(self)  # Добавляем каждый новый экземпляр в список
+        super().__init__()
 
     def __str__(self):
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
