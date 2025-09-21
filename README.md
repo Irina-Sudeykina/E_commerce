@@ -69,6 +69,10 @@ Samsung Galaxy S23 Ultra
 
  #### Пример использования: 
  ```
+from src.lawn_grass import LawnGrass
+from src.product import Product
+from src.smartphone import Smartphone
+
 Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
 
 Smartphone(
@@ -126,6 +130,50 @@ Samsung Galaxy S23 Ultra
 256GB, Серый цвет, 200MP камера
 180000.0
 5
+ ```
+
+
+ ### Класс **BaseEntity**
+ Абстрактный базовый класс для слассов Category и Order.
+ Имеет абстрактный метод calculate_total, 
+ который необходимо переопределять для каждого потомка.
+
+ #### Пример использования: 
+ ```
+from src.order import Order
+from src.product import Product
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+order_product1 = Order(product1, 2)
+print(order_product1)
+ ```
+ #### Пример работы:
+ ```
+Заказ №1. Продукт: Samsung Galaxy S23 Ultra, кол-во: 2, итого: 360000.0 руб.
+ ```
+
+
+ ### Класс **Order**
+ Для класса Order определены следующие свойства: 
+     название (name),
+     товар (product),
+     количество купленного товара (quantity),
+     итоговая стоимость (total_cost).
+
+ #### Пример использования: 
+ ```
+from src.order import Order
+from src.product import Product
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+order_product1 = Order(product1, 2)
+print(order_product1)
+ ```
+ #### Пример работы:
+ ```
+Заказ №1. Продукт: Samsung Galaxy S23 Ultra, кол-во: 2, итого: 360000.0 руб.
  ```
 
 
