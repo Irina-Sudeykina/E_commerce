@@ -1,7 +1,8 @@
+from src.base_entity import BaseEntity
 from src.product import Product
 
 
-class Category:
+class Category(BaseEntity):
     name: str
     description: str
     __products: list
@@ -39,3 +40,9 @@ class Category:
             Category.product_count += 1
         else:
             raise TypeError("Переданный аргумент не является объектом Product!")
+
+    def calculate_total(self):
+        """
+        Подсчет суммарного количества продуктов в категории.
+        """
+        return sum([p.quantity for p in self.__products]) if self.__products else 0

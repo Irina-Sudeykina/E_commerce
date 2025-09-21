@@ -2,6 +2,7 @@ from src import utils
 from src.category import Category
 from src.category_iterator import CategoryIterator
 from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.smartphone import Smartphone
 
@@ -220,3 +221,8 @@ if __name__ == "__main__":
 
     print(Category.category_count)
     print(Category.product_count)
+
+    print(category1.calculate_total())
+
+    order_product1 = Order(product1, 2)
+    print(order_product1)

@@ -3,6 +3,7 @@ import pytest
 from src.category import Category
 from src.category_iterator import CategoryIterator
 from src.lawn_grass import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.smartphone import Smartphone
 
@@ -166,3 +167,11 @@ def lawn_grass2():
         germination_period="5 дней",
         color="Темно-зеленый",
     )
+
+
+@pytest.fixture
+def order1():
+    """
+    Фикстура экземпляра класса Order - 1
+    """
+    return Order(Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14), 2)

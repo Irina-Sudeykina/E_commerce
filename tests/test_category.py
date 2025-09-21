@@ -89,10 +89,31 @@ def test_category_add_product_err(category2) -> None:
 
 
 def test_category_add_product_smartphone(category1, smartphone1):
+    """
+    Проверка геттера add_product класса Smartphone
+    :param category1: фикстура экземпляра класса Category - 1
+    :param smartphone1: фикстура экземпляра класса Smartphone - 1
+    :return: ничего не возвращает
+    """
     category1.add_product(smartphone1)
     assert category1.products_in_list[-1].name == "Samsung Galaxy S23 Ultra"
 
 
 def test_category_add_product_lawn_grass(category2, lawn_grass1):
+    """
+    Проверка геттера add_product класса LawnGrass
+    :param category2: фикстура экземпляра класса Category - 2
+    :param lawn_grass1: фикстура экземпляра класса LawnGrass - 1
+    :return: ничего не возвращает
+    """
     category2.add_product(lawn_grass1)
     assert category2.products_in_list[-1].name == "Газонная трава"
+
+
+def test_category_calculate_total(category1):
+    """
+    Проверка метода calculate_total класса Category
+    :param category1: фикстура экземпляра класса Category - 1
+    :return: ничего не возвращает
+    """
+    assert category1.calculate_total() == 27
