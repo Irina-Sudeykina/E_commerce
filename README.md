@@ -18,6 +18,90 @@
 
 ## Использование:
   
+ ### Класс **BaseProduct**
+ Абстрактный класс, родительский для класса Product.
+ Имеет абстрактный метод new_product, 
+ который необходимо переопределять для каждого потомка.
+
+ #### Пример использования: 
+ ```
+from src.product import Product
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+print(product1.name)
+print(product1.description)
+print(product1.price)
+print(product1.quantity)
+
+new_product = Product.new_product(
+    {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 5,
+    }
+)
+print(new_product.name)
+print(new_product.description)
+print(new_product.price)
+print(new_product.quantity)
+
+ ```
+ #### Пример работы:
+ ```
+Samsung Galaxy S23 Ultra
+256GB, Серый цвет, 200MP камера
+180000.0
+5
+
+Samsung Galaxy S23 Ultra
+256GB, Серый цвет, 200MP камера
+180000.0
+10
+ ```
+
+
+ ### Класс **PrintMixin**
+ Класс миксин для класса Product,
+ который печатает в консоль информацию о том, 
+ от какого класса и с какими параметрами был создан объект
+
+ #### Пример использования: 
+ ```
+Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
+
+Smartphone(
+        name="Iphone 15",
+        description="512GB, Gray space",
+        price=210000.0,
+        quantity=8,
+        efficiency=98.2,
+        model="15",
+        memory=512,
+        color="Gray space",
+    )
+
+LawnGrass(
+        name="Газонная трава",
+        description="Элитная трава для газона",
+        price=500.0,
+        quantity=20,
+        country="Россия",
+        germination_period="7 дней",
+        color="Зеленый",
+    )
+ ```
+ #### Пример работы:
+ ```
+Product(Iphone 15, 512GB, Gray space, 210000.0, 8)
+
+Smartphone(Iphone 15, 512GB, Gray space, 210000.0, 8)
+
+LawnGrass(Газонная трава, Элитная трава для газона, 500.0, 20)
+ ```
+
+
  ### Класс **Product**
  Для класса Product определены следующие свойства: 
      название (name),
