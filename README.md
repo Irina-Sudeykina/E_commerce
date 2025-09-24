@@ -18,6 +18,94 @@
 
 ## Использование:
   
+ ### Класс **BaseProduct**
+ Абстрактный класс, родительский для класса Product.
+ Имеет абстрактный метод new_product, 
+ который необходимо переопределять для каждого потомка.
+
+ #### Пример использования: 
+ ```
+from src.product import Product
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+print(product1.name)
+print(product1.description)
+print(product1.price)
+print(product1.quantity)
+
+new_product = Product.new_product(
+    {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 5,
+    }
+)
+print(new_product.name)
+print(new_product.description)
+print(new_product.price)
+print(new_product.quantity)
+
+ ```
+ #### Пример работы:
+ ```
+Samsung Galaxy S23 Ultra
+256GB, Серый цвет, 200MP камера
+180000.0
+5
+
+Samsung Galaxy S23 Ultra
+256GB, Серый цвет, 200MP камера
+180000.0
+10
+ ```
+
+
+ ### Класс **PrintMixin**
+ Класс миксин для класса Product,
+ который печатает в консоль информацию о том, 
+ от какого класса и с какими параметрами был создан объект
+
+ #### Пример использования: 
+ ```
+from src.lawn_grass import LawnGrass
+from src.product import Product
+from src.smartphone import Smartphone
+
+Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=8)
+
+Smartphone(
+        name="Iphone 15",
+        description="512GB, Gray space",
+        price=210000.0,
+        quantity=8,
+        efficiency=98.2,
+        model="15",
+        memory=512,
+        color="Gray space",
+    )
+
+LawnGrass(
+        name="Газонная трава",
+        description="Элитная трава для газона",
+        price=500.0,
+        quantity=20,
+        country="Россия",
+        germination_period="7 дней",
+        color="Зеленый",
+    )
+ ```
+ #### Пример работы:
+ ```
+Product(Iphone 15, 512GB, Gray space, 210000.0, 8)
+
+Smartphone(Iphone 15, 512GB, Gray space, 210000.0, 8)
+
+LawnGrass(Газонная трава, Элитная трава для газона, 500.0, 20)
+ ```
+
+
  ### Класс **Product**
  Для класса Product определены следующие свойства: 
      название (name),
@@ -42,6 +130,50 @@ Samsung Galaxy S23 Ultra
 256GB, Серый цвет, 200MP камера
 180000.0
 5
+ ```
+
+
+ ### Класс **BaseEntity**
+ Абстрактный базовый класс для слассов Category и Order.
+ Имеет абстрактный метод calculate_total, 
+ который необходимо переопределять для каждого потомка.
+
+ #### Пример использования: 
+ ```
+from src.order import Order
+from src.product import Product
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+order_product1 = Order(product1, 2)
+print(order_product1)
+ ```
+ #### Пример работы:
+ ```
+Заказ №1. Продукт: Samsung Galaxy S23 Ultra, кол-во: 2, итого: 360000.0 руб.
+ ```
+
+
+ ### Класс **Order**
+ Для класса Order определены следующие свойства: 
+     название (name),
+     товар (product),
+     количество купленного товара (quantity),
+     итоговая стоимость (total_cost).
+
+ #### Пример использования: 
+ ```
+from src.order import Order
+from src.product import Product
+
+product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+order_product1 = Order(product1, 2)
+print(order_product1)
+ ```
+ #### Пример работы:
+ ```
+Заказ №1. Продукт: Samsung Galaxy S23 Ultra, кол-во: 2, итого: 360000.0 руб.
  ```
 
 
@@ -80,6 +212,77 @@ print(category1.product_count)
 3
 1
 3
+ ```
+
+
+ ### Класс **Smartphone**
+ Наследник класса Product
+ Класс Smartphone расширен атрибутами: 
+     производительность (efficiency),
+     модель (model),
+     объем встроенной памяти (memory),
+     цвет (color).
+
+ #### Пример использования: 
+ ```
+from src.smartphone import Smartphone
+
+smartphone1 = Smartphone(
+        "Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5, 95.5, "S23 Ultra", 256, "Серый"
+    )
+
+print(smartphone1.name)
+print(smartphone1.description)
+print(smartphone1.price)
+print(smartphone1.quantity)
+print(smartphone1.efficiency)
+print(smartphone1.model)
+print(smartphone1.memory)
+print(smartphone1.color)
+ ```
+ #### Пример работы:
+ ```
+Samsung Galaxy S23 Ultra
+256GB, Серый цвет, 200MP камера
+180000.0
+5
+95.5
+S23 Ultra
+256
+Серый
+ ```
+
+
+ ### Класс **LawnGrass**
+ Наследник класса Product
+ Класс LawnGrass расширен атрибутами: 
+     страна-производитель (country),
+     срок прорастания (germination_period),
+     цвет (color).
+
+ #### Пример использования: 
+ ```
+from src.lawn_grass import LawnGrass
+
+grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+
+print(grass1.name)
+print(grass1.description)
+print(grass1.price)
+print(grass1.quantity)
+print(grass1.country)
+print(grass1.germination_period)
+print(grass1.color)
+ ```
+ #### Пример работы:
+ ```
+Газонная трава
+Элитная трава для газона
+500.0
+20
+Россия
+7 дней
+Зеленый
  ```
 
 

@@ -1,5 +1,7 @@
 from unittest.mock import patch
 
+import pytest
+
 from src.product import Product
 
 
@@ -88,11 +90,11 @@ def test_product_update_price(capsys, product1) -> None:
     """
     product1.price = -800
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
     product1.price = 0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
     product1.price = 195000.0
     assert product1.price == 195000.0
@@ -123,3 +125,13 @@ def test_product_add(product1, product2) -> None:
     :return: Ничего не возвращает
     """
     assert product1 + product2 == 2580000.0
+
+
+def test_product_add_err(product1) -> None:
+    """
+    Проверка сложения объектов экземпляра сласса Product c чем-то еще
+    :param product1: фикстура экземпляра класса Product - 1
+    :return: Ничего не возвращает
+    """
+    with pytest.raises(TypeError):
+        print(product1 + 1)

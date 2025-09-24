@@ -36,5 +36,5 @@ def test_create_objects_from_json(category_json_file: list) -> None:
     result = utils.create_objects_from_json(category_json_file)
     assert result[0].name == "Смартфоны"
     assert len(result) == 2
-    assert result[0].category_count == 8
-    assert result[0].product_count == 19
+    assert result[0].category_count == 12
+    assert result[0].product_count == 29
