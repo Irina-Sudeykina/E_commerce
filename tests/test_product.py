@@ -143,6 +143,6 @@ def test_product_init_err(capsys) -> None:
     :return: Ничего не возвращает
     """
     with pytest.raises(ValueError):
-        Product('65" TCL 65C7K', "черный [4K UltraHD, Wi-Fi]", 99999.0, 0)
+        Product('65" TCL 65C7K', "черный [4K UltraHD, Wi-Fi]", 99999.0, -2)
         err_message = capsys.readouterr()  # Теперь берем stderr
         assert err_message.strip().split("\n")[-1] == "Товар с нулевым количеством не может быть добавлен"

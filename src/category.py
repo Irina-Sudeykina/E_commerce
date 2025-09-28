@@ -1,4 +1,5 @@
 from src.base_entity import BaseEntity
+from src.exceptions import ZeroQuantityProduct
 from src.product import Product
 
 
@@ -36,8 +37,17 @@ class Category(BaseEntity):
 
     def add_product(self, product: Product):
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category.product_count += 1
+            try:
+                if product.quantity == 0:
+                    raise ZeroQuantityProduct("Нельзя добавить продукт с нулевым количеством!")
+            except ZeroQuantityProduct as e:
+                print(str(e))
+            else:
+                self.__products.append(product)
+                Category.product_count += 1
+                print("Продукт добавлен успешно")
+            finally:
+                print("Обработка добавления продукта звершена")
         else:
             raise TypeError("Переданный аргумент не является объектом Product!")
 
