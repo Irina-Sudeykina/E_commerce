@@ -46,3 +46,12 @@ class Category(BaseEntity):
         Подсчет суммарного количества продуктов в категории.
         """
         return sum([p.quantity for p in self.__products]) if self.__products else 0
+    
+    def middle_price(self):
+        """
+        Подсчет среднего ценника всех товаров
+        """
+        try:
+            return sum(product.price for product in self.__products) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
