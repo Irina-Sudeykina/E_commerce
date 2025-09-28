@@ -117,3 +117,14 @@ def test_category_calculate_total(category1):
     :return: ничего не возвращает
     """
     assert category1.calculate_total() == 27
+
+
+def test_middle_price(category1, category_without_product):
+    """
+    Проверка метода middle_price класса Category
+    :param category1: фикстура экземпляра класса Category - 1
+    :param category_without_product: Фикстура экземпляра класса Category без продуктов
+    :return: ничего не возвращает
+    """
+    assert category1.middle_price() == 140333.33
+    assert category_without_product.middle_price() == 0

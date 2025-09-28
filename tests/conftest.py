@@ -175,3 +175,15 @@ def order1():
     Фикстура экземпляра класса Order - 1
     """
     return Order(Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14), 2)
+
+
+@pytest.fixture
+def category_without_product():
+    """
+    Фикстура экземпляра класса Category без продуктов
+    """
+    return Category(
+        "Смартфоны",
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        products=[],
+    )
