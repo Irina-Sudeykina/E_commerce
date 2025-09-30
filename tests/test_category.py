@@ -1,5 +1,7 @@
 import pytest
 
+from src.product import Product
+
 
 def test_category_init(category1, category2) -> None:
     """
@@ -117,3 +119,31 @@ def test_category_calculate_total(category1):
     :return: ничего не возвращает
     """
     assert category1.calculate_total() == 27
+
+
+def test_middle_price(category1, category_without_product):
+    """
+    Проверка метода middle_price класса Category
+    :param category1: фикстура экземпляра класса Category - 1
+    :param category_without_product: Фикстура экземпляра класса Category без продуктов
+    :return: ничего не возвращает
+    """
+    assert category1.middle_price() == 140333.33
+    assert category_without_product.middle_price() == 0
+
+
+def test_product_custom_exception(capsys, category1):
+    assert len(category1.products_in_list) == 3
+
+    product_add = Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=1)
+    product_add.quantity = 0
+    category1.add_product(product_add)
+    message = capsys.readouterr()
+    assert message.out.strip().split("\n")[-2] == "Нельзя добавить продукт с нулевым количеством!"
+    assert message.out.strip().split("\n")[-1] == "Обработка добавления продукта звершена"
+
+    product_add = Product(name="Iphone 15", description="512GB, Gray space", price=210000.0, quantity=2)
+    category1.add_product(product_add)
+    message = capsys.readouterr()
+    assert message.out.strip().split("\n")[-2] == "Продукт добавлен успешно"
+    assert message.out.strip().split("\n")[-1] == "Обработка добавления продукта звершена"
